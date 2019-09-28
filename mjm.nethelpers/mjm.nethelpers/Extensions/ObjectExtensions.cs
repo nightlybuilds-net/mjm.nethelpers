@@ -1,4 +1,6 @@
 using System;
+using System.Reflection;
+using System.Text;
 
 namespace mjm.nethelpers.Extensions
 {
@@ -62,6 +64,28 @@ namespace mjm.nethelpers.Extensions
             {
                 return default(T);
             }
+        }
+
+
+        /// <summary>
+        /// Concatenate all public properties
+        /// Propertyname: value -- Properyname: value
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string PropertiesToString(this object obj)
+        {
+            if (obj == null) return "[NULL]";
+
+            var builder = new StringBuilder();
+            var properties = obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            foreach (var propertyInfo in properties)
+            {
+                builder.Append($"{propertyInfo.Name}: {propertyInfo.GetValue(obj)} -- ");
+            }
+
+            var res = builder.ToString();
+            return res.Substring(0,res.Length - 4);
         }
     }
 
