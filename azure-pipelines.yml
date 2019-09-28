@@ -32,8 +32,14 @@ steps:
   displayName: "Build"
   inputs:
     command: "build"
-    projects: "$(project)"
+    projects: "$(solution)"
     arguments: "-c $(buildConfiguration)"
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'mjm.nethelpers/mjm.nethelpers.tests.csproj'"
 
 
 - task: NuGetCommand@2
