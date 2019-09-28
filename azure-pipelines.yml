@@ -13,8 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  project: "mjm.nethelpers/mjm.nethelpers.csproj"
-  projectTest: "mjm.nethelpers.tests/mjm.nethelpers.tests.csproj"
+  project: "mjm.nethelpers/mjm.nethelpers/mjm.nethelpers.csproj"
+  projectTest: "mjm.nethelpers/mjm.nethelpers.tests/mjm.nethelpers.tests.csproj"
   publishFolder: "mjm.nethelpers/bin/$(buildConfiguration)/netstandard2.0"
   
 steps:
