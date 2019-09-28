@@ -38,7 +38,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'mjm.nethelpers/mjm.nethelpers.tests.csproj'
+    projects: 'mjm.nethelpers.tests/mjm.nethelpers.tests.csproj'
 
 - task: NuGetCommand@2
   inputs:
