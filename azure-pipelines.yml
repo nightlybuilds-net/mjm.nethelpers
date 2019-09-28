@@ -14,6 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   project: "mjm.nethelpers/mjm.nethelpers.csproj"
+  projectTest: "mjm.nethelpers.tests/mjm.nethelpers.tests.csproj"
   publishFolder: "mjm.nethelpers/bin/$(buildConfiguration)/netstandard2.0"
   
 steps:
@@ -28,17 +29,27 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+
+
 - task: DotNetCoreCLI@2
   displayName: "Build"
   inputs:
     command: "build"
-    projects: "$(solution)"
+    projects: "$(project)"
+    arguments: "-c $(buildConfiguration)"
+
+
+- task: DotNetCoreCLI@2
+  displayName: "Build"
+  inputs:
+    command: "build"
+    projects: "$(projectTest)"
     arguments: "-c $(buildConfiguration)"
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'mjm.nethelpers.tests/mjm.nethelpers.tests.csproj'
+    projects: '$(projectTest)'
 
 - task: NuGetCommand@2
   inputs:
