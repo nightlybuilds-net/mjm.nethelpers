@@ -5,6 +5,7 @@
 
 trigger:
 - master
+- develop
 
 pool:
   vmImage: 'windows-latest'
@@ -13,8 +14,10 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  project: "mjm.nethelpers/mjm.nethelpers.csproj"
+  project: "mjm.nethelpers/mjm.nethelpers/mjm.nethelpers.csproj"
+  projectTest: "mjm.nethelpers/mjm.nethelpers.tests/mjm.nethelpers.tests.csproj"
   publishFolder: "mjm.nethelpers/bin/$(buildConfiguration)/netstandard2.0"
+  PackNumber: $(Build.BuildNumber)
   
 steps:
 - task: NuGetToolInstaller@1
@@ -36,11 +39,24 @@ steps:
     arguments: "-c $(buildConfiguration)"
 
 
+- task: DotNetCoreCLI@2
+  displayName: "Build"
+  inputs:
+    command: "build"
+    projects: "$(projectTest)"
+    arguments: "-c $(buildConfiguration)"
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(projectTest)'
+
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
     packagesToPack: '$(project)'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'PackNumber'
 
 - task: PublishBuildArtifacts@1
   inputs:
