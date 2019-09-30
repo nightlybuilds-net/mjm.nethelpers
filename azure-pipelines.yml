@@ -16,6 +16,7 @@ variables:
   project: "mjm.nethelpers/mjm.nethelpers/mjm.nethelpers.csproj"
   projectTest: "mjm.nethelpers/mjm.nethelpers.tests/mjm.nethelpers.tests.csproj"
   publishFolder: "mjm.nethelpers/bin/$(buildConfiguration)/netstandard2.0"
+  PackNumber: $(Build.BuildNumber)
   
 steps:
 - task: NuGetToolInstaller@1
@@ -28,8 +29,6 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
-
 
 - task: DotNetCoreCLI@2
   displayName: "Build"
@@ -55,7 +54,8 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '$(project)'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'PackNumber'
 
 - task: PublishBuildArtifacts@1
   inputs:
