@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="eea84399-766a-4b21-8e52-c3593b19804e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mjm.nethelpers.sln" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mjm.nethelpers.tests/ObjectExtensionShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers.tests/ObjectExtensionShould.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mjm.nethelpers/mjm.nethelpers.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers/mjm.nethelpers.csproj" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +78,9 @@
       <workItem from="1569573304424" duration="718000" />
       <workItem from="1569574062184" duration="814000" />
       <workItem from="1569601505057" duration="1732000" />
-      <workItem from="1569708241616" duration="1863000" />
+      <workItem from="1569708241616" duration="2876000" />
+      <workItem from="1569825353087" duration="1222000" />
+      <workItem from="1569826950155" duration="379000" />
     </task>
     <servers />
   </component>
@@ -108,13 +112,13 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs</url>
-          <line>76</line>
+          <line>77</line>
           <properties documentPath="$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs" initialLine="76">
             <startOffsets>
-              <option value="2013" />
+              <option value="2037" />
             </startOffsets>
             <endOffsets>
-              <option value="2014" />
+              <option value="2038" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />

@@ -1,6 +1,8 @@
 using System;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
+
 
 namespace mjm.nethelpers.Extensions
 {
@@ -86,6 +88,17 @@ namespace mjm.nethelpers.Extensions
 
             var res = builder.ToString();
             return res.Substring(0,res.Length - 4);
+        }
+
+
+        /// <summary>
+        /// Serialize object to JSON using System.Text.Json
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string ToJson(this object obj)
+        {
+            return JsonSerializer.Serialize(obj);
         }
     }
 

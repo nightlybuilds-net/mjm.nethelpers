@@ -1,11 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <PackageVersion>0.0.1</PackageVersion>
         <Authors>Marco Milani</Authors>
         <PackageProjectUrl>https://github.com/markjackmilian/mjm.nethelpers</PackageProjectUrl>
         <RepositoryUrl>https://github.com/markjackmilian/mjm.nethelpers</RepositoryUrl>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Text.Json" Version="4.6.0" />
+    </ItemGroup>
 
 </Project>
