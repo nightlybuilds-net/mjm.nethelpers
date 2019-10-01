@@ -98,8 +98,9 @@ namespace mjm.nethelpers.Extensions
         /// <returns></returns>
         public static string ToJson(this object obj)
         {
-            return JsonSerializer.Serialize(obj);
+            return obj == null ? null : JsonSerializer.Serialize(obj);
         }
+
     }
 
 }
