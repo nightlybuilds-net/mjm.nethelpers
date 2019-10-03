@@ -45,7 +45,7 @@ namespace mjm.nethelpers.Extensions
         /// <param name="obj"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T Cast<T>(this object obj)
+        public static T To<T>(this object obj)
         {
             return (T) obj;
         }
@@ -56,7 +56,7 @@ namespace mjm.nethelpers.Extensions
         /// <param name="obj"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T SafelyCast<T>(this object obj) where T : class
+        public static T SafelyTo<T>(this object obj) where T : class
         {
             try
             {
