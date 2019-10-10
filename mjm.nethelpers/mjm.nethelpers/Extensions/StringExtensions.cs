@@ -14,5 +14,25 @@ namespace mjm.nethelpers.Extensions
         {
             return json == null ? default(T) : JsonSerializer.Deserialize<T>(json);
         }
+
+        /// <summary>
+        /// Extension for string.IsNullOrEmpty
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty(this string text)
+        {
+            return string.IsNullOrEmpty(text);
+        }
+        
+        /// <summary>
+        /// Extension for string.IsNullOrWhiteSpace
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static bool IsNullOrWhiteSpace(this string text)
+        {
+            return string.IsNullOrWhiteSpace(text);
+        }
     }
 }
