@@ -34,6 +34,24 @@ namespace mjm.nethelpers.tests
             var serialized = obj.ToJson();
             serialized.ShouldBe(@"{""Name"":""Mark Jack"",""Surname"":""Milian""}");
         }
+
+        [Fact]
+        public void CastToT()
+        {
+            object obj = new TestDto();
+            obj.To<TestDto>().GetType().ShouldBe(typeof(TestDto));
+        }
+        
+        [Fact]
+        public void ThrowForWrongCast()
+        {
+            object obj = new TestDto();
+
+            Action action = () => { obj.To<string>(); };
+
+            action.ShouldThrow<InvalidCastException>();
+            
+        }
     }
 
     class TestDto
