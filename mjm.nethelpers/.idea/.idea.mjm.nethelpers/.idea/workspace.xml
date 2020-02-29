@@ -4,11 +4,9 @@
     <list default="true" id="eea84399-766a-4b21-8e52-c3593b19804e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.mjm.nethelpers/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mjm.nethelpers.tests/ObjectExtensionShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers.tests/ObjectExtensionShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mjm.nethelpers/mjm.nethelpers.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers/mjm.nethelpers.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mjm.nethelpers.tests/StringExtensionShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers.tests/StringExtensionShould.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mjm.nethelpers/Extensions/StringExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/mjm.nethelpers/Extensions/StringExtensions.cs" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +18,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/mjm.nethelpers.tests/ObjectExtensionShould.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/mjm.nethelpers.tests/StringExtensionShould.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/mjm.nethelpers/Extensions/StringExtensions.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -29,6 +29,8 @@
         <option value="$PROJECT_DIR$/mjm.nethelpers.tests/UnitTest1.cs" />
         <option value="$PROJECT_DIR$/mjm.nethelpers/Extensions/ObjectExtensions.cs" />
         <option value="$PROJECT_DIR$/mjm.nethelpers.tests/ObjectExtensionShould.cs" />
+        <option value="$PROJECT_DIR$/mjm.nethelpers/Extensions/StringExtensions.cs" />
+        <option value="$PROJECT_DIR$/mjm.nethelpers.tests/StringExtensionShould.cs" />
       </list>
     </option>
   </component>
@@ -43,27 +45,22 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="Rider.SolutionExplorerActivator" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -81,6 +78,7 @@
       <workItem from="1569708241616" duration="2876000" />
       <workItem from="1569825353087" duration="1222000" />
       <workItem from="1569826950155" duration="379000" />
+      <workItem from="1582984905556" duration="465000" />
     </task>
     <servers />
   </component>
@@ -99,9 +97,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
