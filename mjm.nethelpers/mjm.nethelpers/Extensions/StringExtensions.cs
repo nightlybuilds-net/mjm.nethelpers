@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json;
 
 namespace mjm.nethelpers.Extensions
@@ -33,6 +34,37 @@ namespace mjm.nethelpers.Extensions
         public static bool IsNullOrWhiteSpace(this string text)
         {
             return string.IsNullOrWhiteSpace(text);
+        }
+
+        /// <summary>
+        /// Parse string to T
+        /// </summary>
+        /// <param name="text"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T Parse<T>(this string text)
+        {
+            return (T)Convert.ChangeType(text, typeof(T));
+        }
+        
+        /// <summary>
+        /// try Parse string to T.
+        /// Return Default if exception
+        /// </summary>
+        /// <param name="text"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T TryParse<T>(this string text)
+        {
+            try
+            {
+                return (T)Convert.ChangeType(text, typeof(T));
+
+            }
+            catch
+            {
+                return default;
+            }
         }
     }
 }
