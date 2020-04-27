@@ -100,6 +100,7 @@ namespace mjm.nethelpers.Extensions
         {
             return obj == null ? null : JsonSerializer.Serialize(obj);
         }
+        
 
     }
 

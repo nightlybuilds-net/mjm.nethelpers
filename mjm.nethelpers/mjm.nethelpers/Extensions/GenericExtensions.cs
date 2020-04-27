@@ -22,5 +22,12 @@ namespace mjm.nethelpers.Extensions
             if (value.CompareTo(max) > 0) return max;
             return value;
         }
+
+
+        public static Evaluable<T> AsEvaluable<T>(this T value)
+        {
+            return new Evaluable<T>(value);
+        }
+
     }
 }
