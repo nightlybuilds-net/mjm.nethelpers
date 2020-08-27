@@ -9,6 +9,7 @@
         <Title>mjm.nethelpers</Title>
         <Description>A collection of helpers and extensions.</Description>
         <PackageTags>net, helpers, extensions</PackageTags>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
