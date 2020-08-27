@@ -2,13 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageVersion>0.0.1</PackageVersion>
+        <PackageVersion></PackageVersion>
         <Authors>Marco Milani</Authors>
         <PackageProjectUrl>https://github.com/markjackmilian/mjm.nethelpers</PackageProjectUrl>
         <RepositoryUrl>https://github.com/markjackmilian/mjm.nethelpers</RepositoryUrl>
         <Title>mjm.nethelpers</Title>
         <Description>A collection of helpers and extensions.</Description>
         <PackageTags>net, helpers, extensions</PackageTags>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
