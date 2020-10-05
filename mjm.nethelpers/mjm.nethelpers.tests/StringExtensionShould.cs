@@ -35,5 +35,62 @@ namespace mjm.nethelpers.tests
 
             parsed.ShouldBe(0);
         }
+
+        [Fact]
+        public void ParseToDateTimeWithDefaultBehaviour()
+        {
+            var sut = "2020-05-10 09:30:15";
+            var sut2 = "2020-05-10T09:30:15";
+            var sut3 = "2020/05/10 09:30:15";
+            var sutError = "2020-05-1009:30:15";
+            
+            var parsed = sut.Parse();
+            AssertCommonForDatetime(parsed, 2020, 5, 10, 9, 30, 15);
+            
+            var parsed2 = sut2.Parse();
+            AssertCommonForDatetime(parsed2, 2020, 5, 10, 9, 30, 15);
+            
+            var parsed3 = sut3.Parse();
+            AssertCommonForDatetime(parsed3, 2020, 5, 10, 9, 30, 15);
+            
+            Should.Throw<Exception>(() =>
+            {
+                var parsedError = sutError.Parse();
+            });
+        }
+        
+        [Fact]
+        public void TryParseToDateTimeWithDefaultBehaviour()
+        {
+            var sut = "2020-05-10 09:30:15";
+            var sut2 = "2020-05-10T09:30:15";
+            var sut3 = "2020/05/10 09:30:15";
+            var sutError = "2020-05-1009:30:15";
+            
+            var parsed = sut.TryParse();
+            AssertCommonForDatetime(parsed, 2020, 5, 10, 9, 30, 15);
+            
+            var parsed2 = sut2.TryParse();
+            AssertCommonForDatetime(parsed2, 2020, 5, 10, 9, 30, 15);
+            
+            var parsed3 = sut3.TryParse();
+            AssertCommonForDatetime(parsed3, 2020, 5, 10, 9, 30, 15);
+            
+            var parsedError = sutError.TryParse();
+
+            var defaultDateTime = default(DateTime);
+            AssertCommonForDatetime(parsedError, defaultDateTime.Year, defaultDateTime.Month, defaultDateTime.Day, defaultDateTime.Hour, defaultDateTime.Minute, defaultDateTime.Second);
+            
+        }
+
+        private static void AssertCommonForDatetime(DateTime parsed, int year, int month, int day, int hour, int minutes, int seconds)
+        {
+            parsed.Year.ShouldBe(year);
+            parsed.Month.ShouldBe(month);
+            parsed.Day.ShouldBe(day);
+            parsed.Hour.ShouldBe(hour);
+            parsed.Minute.ShouldBe(minutes);
+            parsed.Second.ShouldBe(seconds);
+        }
     }
 }
