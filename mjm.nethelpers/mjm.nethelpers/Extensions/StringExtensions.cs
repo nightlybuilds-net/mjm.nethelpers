@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text.Json;
 
 namespace mjm.nethelpers.Extensions
@@ -65,6 +66,33 @@ namespace mjm.nethelpers.Extensions
             {
                 return default;
             }
+        }
+
+        /// <summary>
+        /// Parse string to DateTime.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="cultureInfo"></param>
+        /// <param name="dateTimeStyles"></param>
+        /// <returns></returns>
+        public static DateTime ParseDateTime(this string text, CultureInfo cultureInfo = null,
+            DateTimeStyles dateTimeStyles = DateTimeStyles.None) 
+        {
+            return DateTime.Parse(text, cultureInfo, dateTimeStyles);
+        }
+        
+        /// <summary>
+        /// Try parse string to DateTime
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="cultureInfo"></param>
+        /// <param name="dateTimeStyles"></param>
+        /// <returns></returns>
+        public static DateTime TryParseDateTime(this string text, CultureInfo cultureInfo = null,
+            DateTimeStyles dateTimeStyles = DateTimeStyles.None)
+        {
+            var parse = DateTime.TryParse(text, cultureInfo, dateTimeStyles, out DateTime result);
+            return parse ? result : default(DateTime);
         }
     }
 }
