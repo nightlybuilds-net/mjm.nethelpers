@@ -44,18 +44,18 @@ namespace mjm.nethelpers.tests
             var sut3 = "2020/05/10 09:30:15";
             var sutError = "2020-05-1009:30:15";
             
-            var parsed = sut.Parse();
+            var parsed = sut.ParseDateTime();
             AssertCommonForDatetime(parsed, 2020, 5, 10, 9, 30, 15);
             
-            var parsed2 = sut2.Parse();
+            var parsed2 = sut2.ParseDateTime();
             AssertCommonForDatetime(parsed2, 2020, 5, 10, 9, 30, 15);
             
-            var parsed3 = sut3.Parse();
+            var parsed3 = sut3.ParseDateTime();
             AssertCommonForDatetime(parsed3, 2020, 5, 10, 9, 30, 15);
             
             Should.Throw<Exception>(() =>
             {
-                var parsedError = sutError.Parse();
+                var parsedError = sutError.ParseDateTime();
             });
         }
         
@@ -67,16 +67,16 @@ namespace mjm.nethelpers.tests
             var sut3 = "2020/05/10 09:30:15";
             var sutError = "2020-05-1009:30:15";
             
-            var parsed = sut.TryParse();
+            var parsed = sut.TryParseDateTime();
             AssertCommonForDatetime(parsed, 2020, 5, 10, 9, 30, 15);
             
-            var parsed2 = sut2.TryParse();
+            var parsed2 = sut2.TryParseDateTime();
             AssertCommonForDatetime(parsed2, 2020, 5, 10, 9, 30, 15);
             
-            var parsed3 = sut3.TryParse();
+            var parsed3 = sut3.TryParseDateTime();
             AssertCommonForDatetime(parsed3, 2020, 5, 10, 9, 30, 15);
             
-            var parsedError = sutError.TryParse();
+            var parsedError = sutError.TryParseDateTime();
 
             var defaultDateTime = default(DateTime);
             AssertCommonForDatetime(parsedError, defaultDateTime.Year, defaultDateTime.Month, defaultDateTime.Day, defaultDateTime.Hour, defaultDateTime.Minute, defaultDateTime.Second);

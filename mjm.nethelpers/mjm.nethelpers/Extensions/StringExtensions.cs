@@ -75,8 +75,8 @@ namespace mjm.nethelpers.Extensions
         /// <param name="cultureInfo"></param>
         /// <param name="dateTimeStyles"></param>
         /// <returns></returns>
-        public static DateTime Parse(this string text, CultureInfo cultureInfo = null,
-            DateTimeStyles dateTimeStyles = DateTimeStyles.None)
+        public static DateTime ParseDateTime(this string text, CultureInfo cultureInfo = null,
+            DateTimeStyles dateTimeStyles = DateTimeStyles.None) 
         {
             return DateTime.Parse(text, cultureInfo, dateTimeStyles);
         }
@@ -88,7 +88,7 @@ namespace mjm.nethelpers.Extensions
         /// <param name="cultureInfo"></param>
         /// <param name="dateTimeStyles"></param>
         /// <returns></returns>
-        public static DateTime TryParse(this string text, CultureInfo cultureInfo = null,
+        public static DateTime TryParseDateTime(this string text, CultureInfo cultureInfo = null,
             DateTimeStyles dateTimeStyles = DateTimeStyles.None)
         {
             var parse = DateTime.TryParse(text, cultureInfo, dateTimeStyles, out DateTime result);
