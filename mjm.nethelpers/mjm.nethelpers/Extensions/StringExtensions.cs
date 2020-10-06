@@ -1,5 +1,8 @@
 using System;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace mjm.nethelpers.Extensions
 {
@@ -9,11 +12,12 @@ namespace mjm.nethelpers.Extensions
         /// Deserialize JSON to T using System.Text.Json
         /// </summary>
         /// <param name="json"></param>
+        /// <param name="options"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T FromJson<T>(this string json)
+        public static T FromJson<T>(this string json, JsonSerializerOptions options = null)
         {
-            return json == null ? default(T) : JsonSerializer.Deserialize<T>(json);
+            return json == null ? default(T) : JsonSerializer.Deserialize<T>(json, options);
         }
 
         /// <summary>
@@ -65,6 +69,33 @@ namespace mjm.nethelpers.Extensions
             {
                 return default;
             }
+        }
+
+        /// <summary>
+        /// Parse string to DateTime.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="cultureInfo"></param>
+        /// <param name="dateTimeStyles"></param>
+        /// <returns></returns>
+        public static DateTime ParseDateTime(this string text, CultureInfo cultureInfo = null,
+            DateTimeStyles dateTimeStyles = DateTimeStyles.None) 
+        {
+            return DateTime.Parse(text, cultureInfo, dateTimeStyles);
+        }
+        
+        /// <summary>
+        /// Try parse string to DateTime
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="cultureInfo"></param>
+        /// <param name="dateTimeStyles"></param>
+        /// <returns></returns>
+        public static DateTime TryParseDateTime(this string text, CultureInfo cultureInfo = null,
+            DateTimeStyles dateTimeStyles = DateTimeStyles.None)
+        {
+            var parse = DateTime.TryParse(text, cultureInfo, dateTimeStyles, out DateTime result);
+            return parse ? result : default(DateTime);
         }
     }
 }
