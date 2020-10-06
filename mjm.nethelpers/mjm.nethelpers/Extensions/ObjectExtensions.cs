@@ -95,10 +95,11 @@ namespace mjm.nethelpers.Extensions
         /// Serialize object to JSON using System.Text.Json
         /// </summary>
         /// <param name="obj"></param>
+        /// <param name="options"></param>
         /// <returns></returns>
-        public static string ToJson(this object obj)
+        public static string ToJson(this object obj, JsonSerializerOptions options = null)
         {
-            return obj == null ? null : JsonSerializer.Serialize(obj);
+            return obj == null ? null : JsonSerializer.Serialize(obj,options);
         }
 
     }

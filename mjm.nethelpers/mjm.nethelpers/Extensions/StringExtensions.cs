@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace mjm.nethelpers.Extensions
 {
@@ -10,11 +12,12 @@ namespace mjm.nethelpers.Extensions
         /// Deserialize JSON to T using System.Text.Json
         /// </summary>
         /// <param name="json"></param>
+        /// <param name="options"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T FromJson<T>(this string json)
+        public static T FromJson<T>(this string json, JsonSerializerOptions options = null)
         {
-            return json == null ? default(T) : JsonSerializer.Deserialize<T>(json);
+            return json == null ? default(T) : JsonSerializer.Deserialize<T>(json, options);
         }
 
         /// <summary>
