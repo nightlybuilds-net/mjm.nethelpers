@@ -18,7 +18,7 @@ Below the signatures that will provide you a nicer and clearer code style
 ### Generic
     T  Clamp<T>(this  T  value, T  min, T  max) where  T : IComparable
 
-### object
+### Object
     bool  IsNull(this  object  obj)
     bool  IsNotNull(this  object  obj)
     bool  Is<T>(this  object  obj)
