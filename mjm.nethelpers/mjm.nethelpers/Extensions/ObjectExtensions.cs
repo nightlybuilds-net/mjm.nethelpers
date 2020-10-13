@@ -102,6 +102,17 @@ namespace mjm.nethelpers.Extensions
             return obj == null ? null : JsonSerializer.Serialize(obj,options);
         }
 
+
+        /// <summary>
+        /// Get IReflectionActions helper
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static IReflectionActions ByReflection(this object obj)
+        {
+            return new ReflectionHelper(obj);
+        }
+
     }
 
 }
