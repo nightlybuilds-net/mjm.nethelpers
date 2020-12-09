@@ -34,8 +34,12 @@ namespace mjm.nethelpers
                 {
                     await this._transactions[i].transaction();
                 }
-                catch
+                catch 
                 {
+                    // if first transaction fail no fallback
+                    if (i == 0)
+                        throw;
+                    
                     // throw for fallback fail
                     for (var j = i; j >= 0; j--)
                     {
@@ -45,4 +49,5 @@ namespace mjm.nethelpers
             }
         }
     }
+
 }

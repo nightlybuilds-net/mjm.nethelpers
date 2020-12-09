@@ -48,6 +48,66 @@ namespace mjm.nethelpers.tests
         }
         
         [Fact]
+        public async Task throw_if_first_step_fail()
+        {
+            var list = new List<int>();
+            var manager = new TransactionalManager();
+            manager.AddTransaction(() =>
+            {
+                throw new Exception();
+            }, () =>
+            {
+                list.Remove(1);
+                return Task.CompletedTask;
+            });
+            
+            manager.AddTransaction(() =>
+            {
+                list.Add(2);
+                return Task.CompletedTask;
+            }, () =>
+            {
+                list.Remove(2);
+                return Task.CompletedTask;
+            });
+
+            Should.Throw<Exception>(async () =>
+            {
+                await manager.Execute();
+            });
+        }
+        
+        [Fact]
+        public async Task throw_if_fallback_step_fail()
+        {
+            var list = new List<int>();
+            var manager = new TransactionalManager();
+            manager.AddTransaction(() =>
+            {
+                list.Add(1);
+                return Task.CompletedTask;
+            }, () =>
+            {
+                throw new Exception();
+            });
+            
+            manager.AddTransaction(() =>
+            {
+                throw new Exception();
+                return Task.CompletedTask;
+            }, () =>
+            {
+                list.Remove(2);
+                return Task.CompletedTask;
+            });
+
+            Should.Throw<Exception>(async () =>
+            {
+                await manager.Execute();
+            });
+        }
+        
+        [Fact]
         public async Task run_steps_in_order_rollback_order_if_fail()
         {
             var list = new List<int>();
