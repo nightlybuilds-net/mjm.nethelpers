@@ -71,10 +71,9 @@ namespace mjm.nethelpers.tests
                 return Task.CompletedTask;
             });
 
-            Should.Throw<Exception>(async () =>
-            {
-                await manager.Execute();
-            });
+            var result = await manager.Execute();
+            result.TransactionException.ShouldNotBeNull();
+            result.RollBackException.ShouldBeNull();
         }
         
         [Fact]
@@ -101,10 +100,9 @@ namespace mjm.nethelpers.tests
                 return Task.CompletedTask;
             });
 
-            Should.Throw<Exception>(async () =>
-            {
-                await manager.Execute();
-            });
+            var result = await manager.Execute();
+            result.TransactionException.ShouldNotBeNull();
+            result.RollBackException.ShouldNotBeNull();
         }
         
         [Fact]

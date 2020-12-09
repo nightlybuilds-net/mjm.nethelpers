@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using mjm.nethelpers.Extensions;
 
 namespace mjm.nethelpers
 {
@@ -26,28 +28,45 @@ namespace mjm.nethelpers
         /// Run the transactions steps
         /// </summary>
         /// <returns></returns>
-        public async Task Execute()
+        public async Task<TransactionResult> Execute()
         {
+            var result = new TransactionResult();
+            
             for (var i = 0; i < this._transactions.Count; i++)
             {
                 try
                 {
                     await this._transactions[i].transaction();
                 }
-                catch 
+                catch (Exception e)
                 {
-                    // if first transaction fail no fallback
-                    if (i == 0)
-                        throw;
+                    result.TransactionException = e;
                     
                     // throw for fallback fail
                     for (var j = i; j >= 0; j--)
                     {
-                        await this._transactions[j].rollback();
+                        try
+                        {
+                            await this._transactions[j].rollback();
+                        }
+                        catch (Exception exception)
+                        {
+                            result.RollBackException = exception;
+                            return result;
+                        }
                     }
                 }
             }
+
+            return result;
         }
+    }
+
+    public class TransactionResult
+    {
+        public bool Result => this.TransactionException.IsNull() && this.RollBackException.IsNull();
+        public Exception TransactionException { get; set; }
+        public Exception RollBackException { get; set; }
     }
 
 }
