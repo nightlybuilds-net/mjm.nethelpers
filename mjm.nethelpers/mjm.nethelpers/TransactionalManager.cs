@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using mjm.nethelpers.Extensions;
 
@@ -40,10 +41,10 @@ namespace mjm.nethelpers
                 }
                 catch (Exception e)
                 {
-                    result.TransactionException = e;
+                    result.TransactionException = new TransactionException(i,e);
                     
                     // throw for fallback fail
-                    for (var j = i; j >= 0; j--)
+                    for (var j = i-1; j >= 0; j--)
                     {
                         try
                         {
@@ -51,7 +52,7 @@ namespace mjm.nethelpers
                         }
                         catch (Exception exception)
                         {
-                            result.RollBackException = exception;
+                            result.RollBackException = new TransactionException(j,e);
                             return result;
                         }
                     }
@@ -65,8 +66,32 @@ namespace mjm.nethelpers
     public class TransactionResult
     {
         public bool Result => this.TransactionException.IsNull() && this.RollBackException.IsNull();
-        public Exception TransactionException { get; set; }
-        public Exception RollBackException { get; set; }
+        public TransactionException TransactionException { get; set; }
+        public TransactionException RollBackException { get; set; }
+        
+    }
+
+    public class TransactionException : Exception
+    {
+        public int Step { get; }
+
+        public TransactionException(int step, Exception exception) : base($"Step {step} has failed. See InnerException [{typeof(Exception)}] for details.",exception)
+        {
+            this.Step = step;
+        }
+
+        /// <summary>
+        /// Recover a detailed error message
+        /// </summary>
+        /// <returns></returns>
+        public string GetLogMessage()
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append($"Step {this.Step} has failed. Inner Exception message:");
+            stringBuilder.AppendLine($"{this.InnerException?.Message}");
+            stringBuilder.AppendLine(this.InnerException?.StackTrace);
+            return stringBuilder.ToString();
+        }
     }
 
 }
