@@ -20,6 +20,25 @@ namespace mjm.nethelpers.Extensions
             return json == null ? default(T) : JsonSerializer.Deserialize<T>(json, options);
         }
 
+
+        /// <summary>
+        /// Deserialize JSON to object using System.Text.Json
+        /// </summary>
+        /// <param name="json"></param>
+        /// <param name="options"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static object FromJson(this string json, Type type, JsonSerializerOptions options = null)
+        {
+            return json == null ? default(object) : JsonSerializer.Deserialize(json, type,options);
+        } 
+
+        public static T Antani<T>(this string json, Type type, JsonSerializerOptions options = null)
+        {
+            var theObj = JsonSerializer.Deserialize(json, type);
+            return (T) theObj;
+        }
+
         /// <summary>
         /// Extension for string.IsNullOrEmpty
         /// </summary>
