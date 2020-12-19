@@ -25,8 +25,8 @@ namespace mjm.nethelpers.Extensions
         /// Deserialize JSON to object using System.Text.Json
         /// </summary>
         /// <param name="json"></param>
+        /// <param name="type"></param>
         /// <param name="options"></param>
-        /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static object FromJson(this string json, Type type, JsonSerializerOptions options = null)
         {
