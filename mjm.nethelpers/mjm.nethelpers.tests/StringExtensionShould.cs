@@ -7,6 +7,7 @@ namespace mjm.nethelpers.tests
 {
     public class StringExtensionShould
     {
+        
         [Fact]
         public void ParseToInt()
         {
