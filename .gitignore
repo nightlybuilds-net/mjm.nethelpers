@@ -349,3 +349,4 @@ healthchecksdb
 MigrationBackup/
 
 mjm.nethelpers/.idea/.idea.mjm.nethelpers/.idea/
+.DS_Store

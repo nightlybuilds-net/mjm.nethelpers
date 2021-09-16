@@ -84,6 +84,17 @@ namespace mjm.nethelpers.tests
             
         }
 
+        [Fact]
+        public void DeserializeToAnonType()
+        {
+            var json = @"{""Number"" : 3, ""Boolean"" : true}";
+
+            var anonType = json.FromJson(new { Number = 0, Boolean = false });
+            
+            anonType.Number.ShouldBe(3);
+            anonType.Boolean.ShouldBe(true);
+        }
+
         private static void AssertCommonForDatetime(DateTime parsed, int year, int month, int day, int hour, int minutes, int seconds)
         {
             parsed.Year.ShouldBe(year);

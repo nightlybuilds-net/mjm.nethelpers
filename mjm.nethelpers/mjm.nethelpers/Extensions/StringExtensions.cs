@@ -20,6 +20,19 @@ namespace mjm.nethelpers.Extensions
             return json == null ? default(T) : JsonSerializer.Deserialize<T>(json, options);
         }
 
+        /// <summary>
+        /// Deserialize JSON to T using System.Text.Json
+        /// </summary>
+        /// <param name="json"></param>
+        /// <param name="anonObject"></param>
+        /// <param name="options"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T FromJson<T>(this string json, T anonObject, JsonSerializerOptions options = null)
+        {
+            return json == null ? default(T) : JsonSerializer.Deserialize<T>(json, options);
+        }
+
 
         /// <summary>
         /// Deserialize JSON to object using System.Text.Json
