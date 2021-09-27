@@ -112,6 +112,24 @@ namespace mjm.nethelpers.Extensions
         {
             return new ReflectionHelper(obj);
         }
+        
+        /// <summary>
+        /// Check if object is disposed catching ObjectDisposedException
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private static bool IsDisposed(this object obj)
+        {
+            try
+            {
+                var _ = obj.GetHashCode();
+                return false;
+            }
+            catch (ObjectDisposedException)
+            {
+                return true;
+            }
+        }
 
     }
 
