@@ -30,15 +30,15 @@ namespace mjm.nethelpers
         /// <returns>
         /// A Task
         /// </returns>
-        public static Task RunAndManageException(Func<Task> run, Func<Exception, Task> onException)
+        public static async Task RunAndManageException(Func<Task> run, Func<Exception, Task> onException)
         {
             try
             {
-                return run?.Invoke();
+                await run.Invoke();
             }
             catch (Exception e)
             {
-                return onException?.Invoke(e);
+                await onException.Invoke(e);
             }
         }
 
