@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using mjm.nethelpers.Extensions;
 
@@ -48,6 +49,11 @@ namespace mjm.nethelpers
         {
             this._obj.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance)
                 ?.SetValue(this._obj, value);
+        }
+
+        public T GetAttribute<T>() where T : Attribute
+        {
+            return (T) Attribute.GetCustomAttribute(this._obj.GetType(), typeof (T));
         }
     }
 
@@ -109,5 +115,13 @@ namespace mjm.nethelpers
         /// <typeparam name="T">Default is BindingFlags.Public | BindingFlags.Instance</typeparam>
         /// <returns></returns>
         void SetField<T>(string fieldName, T value);
+
+
+       
+        /// <summary>
+        /// GetAttribute returns an attribute of type T from the current method.
+        /// </summary>
+        T GetAttribute<T>() where T : Attribute;
+
     }
 }

@@ -21,6 +21,26 @@ namespace mjm.nethelpers
                 onException?.Invoke(e);
             }
         }
+        
+        /// <summary>
+        /// > Run a function and if it throws an exception, run another function with the exception as a parameter
+        /// </summary>
+        /// <param name="run">The task to run</param>
+        /// <param name="onException">The function to run if an exception is thrown.</param>
+        /// <returns>
+        /// A Task
+        /// </returns>
+        public static async Task RunAndManageException(Func<Task> run, Func<Exception, Task> onException)
+        {
+            try
+            {
+                await run.Invoke();
+            }
+            catch (Exception e)
+            {
+                await onException.Invoke(e);
+            }
+        }
 
         /// <summary>
         /// "Run the given function and return its result, or if an exception is thrown, return the result of the given
