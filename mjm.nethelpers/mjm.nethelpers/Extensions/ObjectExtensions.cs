@@ -152,7 +152,7 @@ namespace mjm.nethelpers.Extensions
         /// <param name="condition"></param>
         /// <param name="action"></param>
         /// <typeparam name="T"></typeparam>
-        public static Task If<T>(this T obj,Func<T,bool> condition, Func<Task> action)
+        public static Task IfAsync<T>(this T obj,Func<T,bool> condition, Func<Task> action)
         {
             return condition.Invoke(obj) ? action() : Task.CompletedTask;
         }

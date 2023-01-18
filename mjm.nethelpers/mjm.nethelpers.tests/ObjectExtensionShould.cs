@@ -68,7 +68,7 @@ namespace mjm.nethelpers.tests
         {
             var runned = false;
             string obj = "test";
-            await obj.If(s => s == "test", async () =>
+            await obj.IfAsync(s => s == "test", async () =>
             {
                 await Task.Delay(1);
                 runned = true;
