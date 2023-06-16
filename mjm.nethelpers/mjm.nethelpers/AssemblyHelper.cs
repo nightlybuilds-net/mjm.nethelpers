@@ -1,16 +1,15 @@
 using System.Reflection;
 
-namespace mjm.nethelpers.Extensions;
+namespace mjm.nethelpers;
 
-public static class AssemblyExtensions
+public static class AssemblyHelper
 {
     /// <summary>
     /// Retrieve assembly from type
     /// </summary>
-    /// <param name="assembly"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static Assembly FromType<T>(this Assembly assembly)
+    public static Assembly FromType<T>()
     {
         return typeof(T).Assembly;
     }
