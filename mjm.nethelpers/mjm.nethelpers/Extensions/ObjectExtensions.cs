@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 
 namespace mjm.nethelpers.Extensions
@@ -118,7 +119,7 @@ namespace mjm.nethelpers.Extensions
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        private static bool IsDisposed(this object obj)
+        public static bool IsDisposed(this object obj)
         {
             try
             {
@@ -129,6 +130,31 @@ namespace mjm.nethelpers.Extensions
             {
                 return true;
             }
+        }
+        
+        /// <summary>
+        /// Run action if condition is true
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="condition"></param>
+        /// <param name="action"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void If<T>(this T obj,Func<T,bool> condition, Action action)
+        {
+            if (condition.Invoke(obj))
+                action();
+        }
+        
+        /// <summary>
+        /// Run task if condition is true
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="condition"></param>
+        /// <param name="action"></param>
+        /// <typeparam name="T"></typeparam>
+        public static Task IfAsync<T>(this T obj,Func<T,bool> condition, Func<Task> action)
+        {
+            return condition.Invoke(obj) ? action() : Task.CompletedTask;
         }
 
     }

@@ -53,7 +53,14 @@ namespace mjm.nethelpers
 
         public T GetAttribute<T>() where T : Attribute
         {
-            return (T) Attribute.GetCustomAttribute(this._obj.GetType(), typeof (T));
+            try
+            {
+                return (T) Attribute.GetCustomAttribute(this._obj.GetType(), typeof (T));
+            }
+            catch
+            {
+                return default;
+            }
         }
     }
 

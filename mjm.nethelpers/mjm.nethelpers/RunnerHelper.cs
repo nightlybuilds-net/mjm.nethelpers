@@ -88,5 +88,47 @@ namespace mjm.nethelpers
                 return await onException(e);
             }
         }
+
+        /// <summary>
+        /// Execute trueAction if condition func is true
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <param name="trueAction"></param>
+        /// <param name="falseAction"></param>
+        public static void RunIf(Func<bool> condition, Action trueAction, Action falseAction)
+        {
+            if (condition())
+                trueAction();
+            else
+                falseAction();
+        }
+        
+        /// <summary>
+        /// Execute trueAction if condition func is true
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <param name="trueAction"></param>
+        /// <param name="falseAction"></param>
+        public static async Task RunIf(Func<Task<bool>> condition, Func<Task> trueAction, Func<Task> falseAction)
+        {
+            if (await condition())
+                await trueAction();
+            else
+                await falseAction();
+        }
+        
+        /// <summary>
+        /// Execute trueAction if condition func is true
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <param name="trueAction"></param>
+        /// <param name="falseAction"></param>
+        public static async Task RunIf(Func<bool> condition, Func<Task> trueAction, Func<Task> falseAction)
+        {
+            if (condition())
+                await trueAction();
+            else
+                await falseAction();
+        }
     }
 }

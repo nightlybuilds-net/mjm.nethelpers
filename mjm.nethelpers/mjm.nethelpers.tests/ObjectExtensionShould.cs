@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using mjm.nethelpers.Extensions;
 using Shouldly;
 using Xunit;
@@ -51,6 +52,28 @@ namespace mjm.nethelpers.tests
 
             action.ShouldThrow<InvalidCastException>();
             
+        }
+        
+        [Fact]
+        public void RunIfConditionIsTrue()
+        {
+            var runned = false;
+            string obj = "test";
+            obj.If(s => s == "test",() => runned = true);
+            runned.ShouldBeTrue();
+        }
+        
+        [Fact]
+        public async Task RunTaskIfConditionIsTrue()
+        {
+            var runned = false;
+            string obj = "test";
+            await obj.IfAsync(s => s == "test", async () =>
+            {
+                await Task.Delay(1);
+                runned = true;
+            });
+            runned.ShouldBeTrue();
         }
     }
 

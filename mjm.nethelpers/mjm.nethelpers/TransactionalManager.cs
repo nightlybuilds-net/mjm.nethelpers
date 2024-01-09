@@ -56,6 +56,8 @@ namespace mjm.nethelpers
                             return result;
                         }
                     }
+
+                    return result;
                 }
             }
 
